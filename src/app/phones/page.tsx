@@ -5,6 +5,7 @@ import { PhoneGrid } from '@/features/phones/components/PhoneGrid';
 import { usePhones } from '@/features/phones/hooks/usePhone';
 import { ResultCount } from '@/features/phones/components/ResultCount';
 import { useDebounce } from '@/hooks/useDebounce';
+import { PageTransition } from '@/components/PageTransition';
 
 export default function PhonesPage() {
   const [search, setSearch] = useState('');
@@ -12,10 +13,10 @@ export default function PhonesPage() {
   const { phones, isLoading } = usePhones(debouncedSearch);
 
   return (
-    <div>
+    <PageTransition>
       <SearchBar search={search} setSearch={setSearch} />
       <ResultCount count={phones.length} />
       {isLoading ? <p>Cargando...</p> : <PhoneGrid phones={phones} />}
-    </div>
+    </PageTransition>
   );
 }
