@@ -1,6 +1,6 @@
 import useSWR from 'swr';
 import { fetcher } from '@/lib/fetcher';
-import { Product } from '../types';
+import { Product } from '../../types';
 
 function dedupeProducts(products: Product[], limit = 20): Product[] {
   const unique = products.filter(
