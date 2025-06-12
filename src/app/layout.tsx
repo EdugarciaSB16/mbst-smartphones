@@ -12,10 +12,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
-      <body>
+    <html lang="es" suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <Navbar />
-        <main className="w-full max-w-[1440px] px-6 mx-auto">{children}</main>
+        <main className="w-full max-w-[1720px] px-6 mx-auto">{children}</main>
       </body>
     </html>
   );
