@@ -1,5 +1,5 @@
 import { PhoneCard } from './PhoneCard';
-import { Product } from '../types';
+import { Product } from '../../types';
 
 export function PhoneGrid({ phones }: { phones: Product[] }) {
   return (
