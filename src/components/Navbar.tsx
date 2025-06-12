@@ -8,7 +8,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 h-20">
-      <div className="mx-auto w-full max-w-[1440px] px-6 flex items-center justify-between h-full">
+      <div className="mx-auto w-full max-w-[1720px] px-6 flex items-center justify-between h-full">
         <Link href="/phones" className="flex items-center gap-2">
           <Image
             src="/assets/logo.svg"
