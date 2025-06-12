@@ -18,14 +18,14 @@ export function PhoneCard({ phone }: { phone: Product }) {
           }}
         />
       </div>
-      <div className="text-xs uppercase font-light text-text-muted mb-1">
+      <div className="text-[10px] uppercase font-light text-text-muted mb-1">
         {phone.brand}
       </div>
       <div className="flex justify-between">
-        <div className="text-sm font-light uppercase text-primary">
+        <div className="text-xs font-light uppercase text-primary">
           {phone.name}
         </div>
-        <div className="text-sm font-light text-primary">
+        <div className="text-xs font-light text-primary">
           {phone.basePrice} EUR
         </div>
       </div>
