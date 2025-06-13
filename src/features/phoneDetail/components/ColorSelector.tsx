@@ -1,5 +1,3 @@
-'use client';
-
 type ColorOption = {
   name: string;
   hexCode: string;
@@ -18,21 +16,24 @@ export function ColorSelector({ options, selected, onSelect }: Props) {
       <span className="text-xs uppercase font-light tracking-wider block mb-2">
         Color. Pick your favourite.
       </span>
-      <div className="flex gap-3">
+
+      <div className="flex gap-3 mb-3">
         {options.map((option) => (
           <button
             key={option.hexCode}
             onClick={() => onSelect(option)}
-            className={`w-6 h-6 border ${
+            className={`w-5 h-5 border transition-all cursor-pointer duration-200 ${
               selected?.hexCode === option.hexCode
-                ? 'ring-2 ring-offset-2 ring-gray-400'
-                : 'border-gray-300'
+                ? 'ring-1 ring-offset-1 ring-black'
+                : 'ring-1 ring-offset-1 ring-border'
             }`}
             style={{ backgroundColor: option.hexCode }}
             aria-label={option.name}
           />
         ))}
       </div>
+
+      {selected && <p className="text-xs font-light">{selected.name}</p>}
     </div>
   );
 }

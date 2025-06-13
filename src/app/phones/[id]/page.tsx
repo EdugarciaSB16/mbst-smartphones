@@ -24,11 +24,19 @@ export default function ProductDetailPage({ params }: Props) {
   const { id } = params;
   const { product, isLoading, isError } = useProductById(id);
 
+  console.log(product);
+
   const [selectedColor, setSelectedColor] = useState<ColorOption | null>(null);
+  const [selectedStorage, setSelectedStorage] = useState(
+    product?.storageOptions[0]
+  );
 
   useEffect(() => {
     if (product?.colorOptions?.length) {
       setSelectedColor(product.colorOptions[0]);
+    }
+    if (product?.storageOptions?.length) {
+      setSelectedStorage(product.storageOptions[0]);
     }
   }, [product]);
 
@@ -57,17 +65,19 @@ export default function ProductDetailPage({ params }: Props) {
                   {product.name}
                 </h1>
                 <p className="text-xl font-light">
-                  From {product.basePrice} EUR
+                  From {selectedStorage?.price ?? product.basePrice} EUR
                 </p>
               </header>
-
-              <StorageSelector options={product.storageOptions} />
+              <StorageSelector
+                options={product.storageOptions}
+                selected={selectedStorage}
+                onSelect={setSelectedStorage}
+              />
               <ColorSelector
                 options={product.colorOptions}
                 selected={selectedColor}
                 onSelect={setSelectedColor}
               />
-
               <button
                 disabled
                 className="bg-black text-white py-4 px-5 text-xs tracking-widest uppercase hover:bg-gray-800 transition-colors h-14 flex items-center justify-center"
