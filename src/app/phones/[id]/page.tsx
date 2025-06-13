@@ -50,7 +50,7 @@ export default function ProductDetailPage({ params }: Props) {
               )}
             </div>
 
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 w-full max-w-[380px] mx-auto lg:mx-0">
               <header className="mb-8">
                 <h1 className="text-2xl font-light uppercase">
                   {product.name}
@@ -69,7 +69,7 @@ export default function ProductDetailPage({ params }: Props) {
 
               <button
                 disabled
-                className="bg-black text-white py-4 px-8 text-xs tracking-widest uppercase hover:bg-gray-800 transition-colors h-14 flex items-center justify-center"
+                className="bg-black text-white py-4 px-5 text-xs tracking-widest uppercase hover:bg-gray-800 transition-colors h-14 flex items-center justify-center"
               >
                 Añadir
               </button>
