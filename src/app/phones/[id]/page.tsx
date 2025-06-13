@@ -9,6 +9,7 @@ import { ProductGallery } from '@/features/phoneDetail/components/ProductGallery
 import { StorageSelector } from '@/features/phoneDetail/components/StorageSelector';
 import { ColorSelector } from '@/features/phoneDetail/components/ColorSelector';
 import { ProductDetailSkeleton } from '@/features/phoneDetail/components/ProductDetailSkeleton';
+import { SpecificationsTable } from '@/features/phoneDetail/components/SpecificationsTable';
 
 type Props = {
   params: { id: string };
@@ -47,7 +48,7 @@ export default function ProductDetailPage({ params }: Props) {
     <PageTransition>
       <BackButton />
       <main className="w-full flex justify-center">
-        <section className="w-full max-w-6xl px-4 py-10">
+        <section className="w-full max-w-[1200px] px-4 py-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div className="flex justify-center lg:justify-start w-full">
               {selectedColor && (
@@ -68,6 +69,7 @@ export default function ProductDetailPage({ params }: Props) {
                   From {selectedStorage?.price ?? product.basePrice} EUR
                 </p>
               </header>
+
               <StorageSelector
                 options={product.storageOptions}
                 selected={selectedStorage}
@@ -86,6 +88,17 @@ export default function ProductDetailPage({ params }: Props) {
               </button>
             </div>
           </div>
+
+          <div className="my-[154px]" />
+
+          <section aria-labelledby="specifications-heading">
+            <SpecificationsTable
+              brand={product.brand}
+              name={product.name}
+              description={product.description}
+              specs={product.specs}
+            />
+          </section>
         </section>
       </main>
     </PageTransition>
