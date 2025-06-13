@@ -4,13 +4,14 @@ import { useProductById } from '@/features/phoneDetail/hooks/useProductById';
 import { notFound } from 'next/navigation';
 import { PageTransition } from '@/components/PageTransition';
 import { BackButton } from '@/components/BackButton';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { ProductGallery } from '@/features/phoneDetail/components/ProductGallery';
 import { StorageSelector } from '@/features/phoneDetail/components/StorageSelector';
 import { ColorSelector } from '@/features/phoneDetail/components/ColorSelector';
 import { ProductDetailSkeleton } from '@/features/phoneDetail/components/ProductDetailSkeleton';
 import { SpecificationsTable } from '@/features/phoneDetail/components/SpecificationsTable';
 import { SimilarItems } from '@/features/phoneDetail/components/SimilarItems';
+import { dedupeProducts } from '@/lib/dedupeProducts';
 
 type Props = {
   params: { id: string };
@@ -32,6 +33,10 @@ export default function ProductDetailPage({ params }: Props) {
   const [selectedStorage, setSelectedStorage] = useState(
     product?.storageOptions[0]
   );
+
+  const dedupedSimilarProducts = useMemo(() => {
+    return dedupeProducts(product?.similarProducts ?? []);
+  }, [product?.similarProducts]);
 
   useEffect(() => {
     if (product?.colorOptions?.length) {
@@ -100,7 +105,7 @@ export default function ProductDetailPage({ params }: Props) {
           </section>
           <div className="my-[154px]" />
           <section className="relative w-screen left-1/2 -translate-x-1/2 px-4">
-            <SimilarItems products={product.similarProducts} />
+            <SimilarItems products={dedupedSimilarProducts} />
           </section>
         </section>
       </main>
