@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import { ProductGallery } from '@/features/phoneDetail/components/ProductGallery';
 import { StorageSelector } from '@/features/phoneDetail/components/StorageSelector';
 import { ColorSelector } from '@/features/phoneDetail/components/ColorSelector';
+import { ProductDetailSkeleton } from '@/features/phoneDetail/components/ProductDetailSkeleton';
 
 type Props = {
   params: { id: string };
@@ -31,7 +32,7 @@ export default function ProductDetailPage({ params }: Props) {
     }
   }, [product]);
 
-  if (isLoading) return <p className="p-4">Cargando producto...</p>;
+  if (isLoading) return <ProductDetailSkeleton />;
   if (isError || !product) return notFound();
 
   return (
