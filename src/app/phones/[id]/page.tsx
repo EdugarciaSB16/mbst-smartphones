@@ -10,6 +10,7 @@ import { StorageSelector } from '@/features/phoneDetail/components/StorageSelect
 import { ColorSelector } from '@/features/phoneDetail/components/ColorSelector';
 import { ProductDetailSkeleton } from '@/features/phoneDetail/components/ProductDetailSkeleton';
 import { SpecificationsTable } from '@/features/phoneDetail/components/SpecificationsTable';
+import { SimilarItems } from '@/features/phoneDetail/components/SimilarItems';
 
 type Props = {
   params: { id: string };
@@ -88,9 +89,7 @@ export default function ProductDetailPage({ params }: Props) {
               </button>
             </div>
           </div>
-
           <div className="my-[154px]" />
-
           <section aria-labelledby="specifications-heading">
             <SpecificationsTable
               brand={product.brand}
@@ -98,6 +97,10 @@ export default function ProductDetailPage({ params }: Props) {
               description={product.description}
               specs={product.specs}
             />
+          </section>
+          <div className="my-[154px]" />
+          <section className="relative w-screen left-1/2 -translate-x-1/2 px-4">
+            <SimilarItems products={product.similarProducts} />
           </section>
         </section>
       </main>
