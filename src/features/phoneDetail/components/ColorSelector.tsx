@@ -23,7 +23,7 @@ export function ColorSelector({ options, selected, onSelect }: Props) {
           <button
             key={option.hexCode}
             onClick={() => onSelect(option)}
-            className={`w-8 h-8 border ${
+            className={`w-6 h-6 border ${
               selected?.hexCode === option.hexCode
                 ? 'ring-2 ring-offset-2 ring-gray-400'
                 : 'border-gray-300'
