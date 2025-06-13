@@ -5,7 +5,12 @@ import { ProductDetail } from '../../types';
 export function useProductById(id: string) {
   const { data, error, isLoading } = useSWR<ProductDetail>(
     id ? `/api/products/${id}` : null,
-    fetcher
+    fetcher,
+    {
+      revalidateOnFocus: false,
+      revalidateIfStale: false,
+      dedupingInterval: 10000,
+    }
   );
 
   return {
