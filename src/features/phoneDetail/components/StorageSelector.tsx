@@ -7,14 +7,14 @@ type Props = {
 export function StorageSelector({ options }: Props) {
   return (
     <div className="mb-8">
-      <span className="text-xs uppercase font-light tracking-wider block mb-2">
-        Storage
+      <span className="text-sm uppercase font-light tracking-wider block mb-4">
+        Storage ¿How much space do you need?
       </span>
-      <div className="flex">
+      <div className="flex ">
         {options.map((option) => (
           <div
             key={option.capacity}
-            className="px-4 py-2 border border-gray-300 text-sm font-light cursor-pointer select-none hover:bg-gray-100"
+            className="h-[65px] w-[95px] border border-gray-300 text-sm font-light cursor-pointer select-none hover:bg-gray-100 flex items-center justify-center"
           >
             {option.capacity}
           </div>
