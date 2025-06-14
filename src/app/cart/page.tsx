@@ -15,12 +15,12 @@ export default function CartPage() {
   }, 0);
 
   return (
-    <section className="w-full max-w-[1720px] mx-auto px-6 py-10">
-      <h1 className="text-2xlh font-light uppercase mb-10">
+    <section className="w-full max-w-[1720px] mx-auto px-6 pt-10 pb-40 min-h-screen relative">
+      <h1 className="text-2xl font-light uppercase mb-10">
         Cart ({cart.length})
       </h1>
 
-      <div className="mb-16 space-y-10">
+      <div className="space-y-10 mb-24">
         {cart.map((item, index) => {
           const price =
             item.product.storageOptions.find(
@@ -50,7 +50,7 @@ export default function CartPage() {
                 <p className="text-xs font-light mb-2">{price} EUR</p>
                 <button
                   onClick={() => removeFromCart(index)}
-                  className="text-xs text-[#DF0000]"
+                  className="text-xs text-[#DF0000] cursor-pointer"
                 >
                   Eliminar
                 </button>
@@ -59,21 +59,48 @@ export default function CartPage() {
           );
         })}
       </div>
+      <div className="fixed bottom-0 left-0 w-full  bg-white z-50">
+        <div className="w-full max-w-[1720px] mx-auto px-6 py-6">
+          <div className="flex justify-between sm:hidden w-full mb-4">
+            <span className="text-sm font-light uppercase">Total</span>
+            <span className="text-sm font-light">{total} EUR</span>
+          </div>
 
-      <div className="flex justify-between items-center">
-        <Link
-          href="/phones"
-          className="border px-8 py-4 text-xs uppercase font-light"
-        >
-          Continue Shopping
-        </Link>
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+            <div className="flex w-full gap-4 sm:hidden">
+              <div className="w-1/2">
+                <Link
+                  href="/phones"
+                  className="border px-4 py-3 text-xs uppercase font-light w-full text-center block"
+                >
+                  Continue Shopping
+                </Link>
+              </div>
+              <div className="w-1/2">
+                <button className="bg-primary text-white px-4 py-3 text-xs uppercase w-full">
+                  Pay
+                </button>
+              </div>
+            </div>
 
-        <div className="flex items-center gap-6">
-          <span className="text-sm font-light uppercase">Total</span>
-          <span className="text-sm font-light">{total} EUR</span>
-          <button className="bg-primary text-white px-12 py-4 text-xs uppercase">
-            Pay
-          </button>
+            <div className="hidden sm:flex w-full justify-between items-center">
+              <Link
+                href="/phones"
+                className="border px-4 py-3 text-xs uppercase font-light text-center w-[260px]"
+              >
+                Continue Shopping
+              </Link>
+              <div className="flex items-center gap-6">
+                <div className="flex gap-2">
+                  <span className="text-sm font-light uppercase">Total</span>
+                  <span className="text-sm font-light">{total} EUR</span>
+                </div>
+                <button className="bg-primary text-white px-4 py-3 text-xs uppercase w-[260px] cursor-pointer">
+                  Pay
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
