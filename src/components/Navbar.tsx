@@ -2,9 +2,10 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useCart } from '@/context/CartContext';
 
 export function Navbar() {
-  const cartCount = 1;
+  const { cart } = useCart();
 
   return (
     <header className="sticky top-0 z-50 h-20">
@@ -27,9 +28,9 @@ export function Navbar() {
             height={18}
             priority
           />
-          {cartCount > 0 && (
+          {cart.length > 0 && (
             <span className="text-[16px] text-primary font-light">
-              {cartCount}
+              {cart.length}
             </span>
           )}
         </Link>
