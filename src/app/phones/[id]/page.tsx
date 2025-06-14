@@ -12,6 +12,7 @@ import { ProductDetailSkeleton } from '@/features/phoneDetail/components/Product
 import { SpecificationsTable } from '@/features/phoneDetail/components/SpecificationsTable';
 import { SimilarItems } from '@/features/phoneDetail/components/SimilarItems';
 import { dedupeProducts } from '@/lib/dedupeProducts';
+import { motion } from 'framer-motion';
 
 type Props = {
   params: { id: string };
@@ -30,9 +31,10 @@ export default function ProductDetailPage({ params }: Props) {
   console.log(product);
 
   const [selectedColor, setSelectedColor] = useState<ColorOption | null>(null);
-  const [selectedStorage, setSelectedStorage] = useState(
-    product?.storageOptions[0]
-  );
+  const [selectedStorage, setSelectedStorage] = useState<{
+    capacity: string;
+    price: number;
+  } | null>(null);
 
   const dedupedSimilarProducts = useMemo(() => {
     return dedupeProducts(product?.similarProducts ?? []);
@@ -41,9 +43,6 @@ export default function ProductDetailPage({ params }: Props) {
   useEffect(() => {
     if (product?.colorOptions?.length) {
       setSelectedColor(product.colorOptions[0]);
-    }
-    if (product?.storageOptions?.length) {
-      setSelectedStorage(product.storageOptions[0]);
     }
   }, [product]);
 
@@ -78,7 +77,7 @@ export default function ProductDetailPage({ params }: Props) {
 
               <StorageSelector
                 options={product.storageOptions}
-                selected={selectedStorage}
+                selected={selectedStorage || undefined}
                 onSelect={setSelectedStorage}
               />
               <ColorSelector
@@ -86,12 +85,21 @@ export default function ProductDetailPage({ params }: Props) {
                 selected={selectedColor}
                 onSelect={setSelectedColor}
               />
-              <button
-                disabled
-                className="bg-primary text-white py-4 px-5 text-xs tracking-widest uppercase hover:bg-gray-800 transition-colors h-14 flex items-center justify-center"
+              <motion.button
+                disabled={!selectedStorage}
+                initial={false}
+                animate={{
+                  opacity: selectedStorage ? 1 : 0.5,
+                }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className={`py-4 px-5 text-xs tracking-widest uppercase transition-colors h-14 flex items-center justify-center ${
+                  !selectedStorage
+                    ? 'bg-[#F3F2F2] text-[#C2BFBC]'
+                    : 'bg-primary text-white'
+                }`}
               >
-                Añadir
-              </button>
+                Add
+              </motion.button>
             </div>
           </div>
           <div className="my-[154px]" />
