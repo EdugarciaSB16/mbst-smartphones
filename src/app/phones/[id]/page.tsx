@@ -104,7 +104,7 @@ export default function ProductDetailPage({ params }: Props) {
             />
           </section>
           <div className="my-[154px]" />
-          <section className="relative w-screen left-1/2 -translate-x-1/2 px-4">
+          <section className="relative w-screen left-1/2 -translate-x-1/2">
             <SimilarItems products={dedupedSimilarProducts} />
           </section>
         </section>
