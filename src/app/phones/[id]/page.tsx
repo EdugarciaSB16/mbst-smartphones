@@ -1,5 +1,5 @@
 'use client';
-
+import { useCart } from '@/context/CartContext';
 import { useProductById } from '@/features/phoneDetail/hooks/useProductById';
 import { notFound } from 'next/navigation';
 import { PageTransition } from '@/components/PageTransition';
@@ -27,18 +27,26 @@ type ColorOption = {
 export default function ProductDetailPage({ params }: Props) {
   const { id } = params;
   const { product, isLoading, isError } = useProductById(id);
-
-  console.log(product);
-
   const [selectedColor, setSelectedColor] = useState<ColorOption | null>(null);
   const [selectedStorage, setSelectedStorage] = useState<{
     capacity: string;
     price: number;
   } | null>(null);
+  const { addToCart } = useCart();
 
   const dedupedSimilarProducts = useMemo(() => {
     return dedupeProducts(product?.similarProducts ?? []);
   }, [product?.similarProducts]);
+
+  const handleAddToCart = () => {
+    if (!selectedColor || !selectedStorage || !product) return;
+
+    addToCart({
+      product,
+      selectedColor: selectedColor.name,
+      selectedStorage: selectedStorage.capacity,
+    });
+  };
 
   useEffect(() => {
     if (product?.colorOptions?.length) {
@@ -97,6 +105,7 @@ export default function ProductDetailPage({ params }: Props) {
                     ? 'bg-[#F3F2F2] text-[#C2BFBC]'
                     : 'bg-primary text-white'
                 }`}
+                onClick={handleAddToCart}
               >
                 Add
               </motion.button>
