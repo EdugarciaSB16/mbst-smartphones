@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 export default function CartPage() {
   const { cart, removeFromCart } = useCart();
+
   const total = cart.reduce((acc, item) => {
     const storage = item.product.storageOptions.find(
       (opt) => opt.capacity === item.selectedStorage
@@ -15,7 +16,7 @@ export default function CartPage() {
 
   return (
     <section className="w-full max-w-[1720px] mx-auto px-6 py-10">
-      <h1 className="text-xl font-light uppercase mb-10">
+      <h1 className="text-2xlh font-light uppercase mb-10">
         Cart ({cart.length})
       </h1>
 
@@ -40,7 +41,7 @@ export default function CartPage() {
                 className="object-contain"
               />
               <div>
-                <p className="text-sm uppercase font-light mb-2">
+                <p className="text-xs uppercase font-light mb-2">
                   {item.product.name}
                 </p>
                 <p className="text-xs font-light mb-2">
@@ -49,7 +50,7 @@ export default function CartPage() {
                 <p className="text-xs font-light mb-2">{price} EUR</p>
                 <button
                   onClick={() => removeFromCart(index)}
-                  className="text-xs text-red-500"
+                  className="text-xs text-[#DF0000]"
                 >
                   Eliminar
                 </button>
@@ -68,9 +69,9 @@ export default function CartPage() {
         </Link>
 
         <div className="flex items-center gap-6">
-          <span className="text-xs font-light uppercase">Total</span>
+          <span className="text-sm font-light uppercase">Total</span>
           <span className="text-sm font-light">{total} EUR</span>
-          <button className="bg-black text-white px-12 py-4 text-xs uppercase">
+          <button className="bg-primary text-white px-12 py-4 text-xs uppercase">
             Pay
           </button>
         </div>
