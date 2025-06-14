@@ -1,3 +1,4 @@
+import { CartProvider } from '@/context/CartContext';
 import { Navbar } from '@/components/Navbar';
 import './globals.css';
 
@@ -14,8 +15,10 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body suppressHydrationWarning>
-        <Navbar />
-        <main className="w-full max-w-[1720px] px-6 mx-auto">{children}</main>
+        <CartProvider>
+          <Navbar />
+          <main className="w-full max-w-[1720px] px-6 mx-auto">{children}</main>
+        </CartProvider>
       </body>
     </html>
   );
