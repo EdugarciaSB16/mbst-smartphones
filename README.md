@@ -1,10 +1,10 @@
-# 📱 MBST Smartphones - E-commerce Catalog
+# 📱 MBST Smartphones
 
 [![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-4.9.5-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0.0-06B6D4?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)
 [![Testing](https://img.shields.io/badge/Testing-Jest-15C213?style=for-the-badge&logo=jest)](https://jestjs.io/)
-[![Coverage](https://img.shields.io/badge/Coverage-85%25-97CA00?style=for-the-badge)](https://jestjs.io/)
+[![Coverage](https://img.shields.io/badge/Coverage-90%25-97CA00?style=for-the-badge)](https://jestjs.io/)
 
 **MBST Smartphones** is a responsive mobile phone catalog developed as part of a Frontend Engineer technical challenge. The app features real-time product search, interactive product detail pages, a functional shopping cart with persistent state, and animated UI feedback.
 
@@ -34,10 +34,11 @@ Explore the live app 👉 [mbst-smartphones.vercel.app/phones](https://mbst-smar
 - 🔁 Similar product recommendations
 - 💬 Toast feedback system
 - 📱 Mobile-first responsive design
-- 🎯 Test coverage >85%
+- 🎯 Test coverage >90%
 
 ## 📁 Project Structure
 
+```bash
 src/
 ├── **mocks**/ # Test mocks (e.g., Next.js Image mock)
 │ └── next/
@@ -102,6 +103,7 @@ src/
 ├── jest.setup.ts # Jest setup
 ├── tsconfig.json # TS compiler config
 └── package.json # Project metadata
+```
 
 ## ▶️ Getting Started
 
