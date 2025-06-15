@@ -60,8 +60,8 @@ export default function ProductDetailPage() {
       <BackButton />
       <main className="w-full flex justify-center">
         <section className="w-full max-w-[1200px] px-4 py-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div className="flex justify-center lg:justify-start w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <div className="flex justify-center md:justify-start w-full">
               {selectedColor && (
                 <ProductGallery
                   colorOptions={product.colorOptions}

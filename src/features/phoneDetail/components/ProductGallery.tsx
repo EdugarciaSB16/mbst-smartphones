@@ -24,17 +24,14 @@ export function ProductGallery({ selectedColor }: Props) {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4, ease: 'easeOut' }}
+          className="w-full max-w-[280px] sm:max-w-[360px] md:max-w-[400px] xl:max-w-[450px]"
         >
           <Image
             src={selectedColor.imageUrl}
             alt={selectedColor.name}
-            height={450}
             width={450}
-            className="object-contain"
-            style={{
-              maxHeight: '450px',
-              maxWidth: '450px',
-            }}
+            height={450}
+            className="object-contain w-full h-auto"
           />
         </motion.div>
       </div>
