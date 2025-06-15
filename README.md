@@ -106,7 +106,9 @@ src/
 git clone https://github.com/EdugarciaSB16/mbst-smartphones.git
 cd mbst-smartphones
 npm install
-cp .env.local.example .env.local
+cp .env.local
+API_URL=your_api_url_here
+API_KEY=your_api_key_here
 npm run dev
 ```
 
