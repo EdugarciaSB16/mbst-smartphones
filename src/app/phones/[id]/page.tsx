@@ -12,6 +12,7 @@ import { ProductDetailSkeleton } from '@/features/phoneDetail/components/Product
 import { SpecificationsTable } from '@/features/phoneDetail/components/SpecificationsTable';
 import { SimilarItems } from '@/features/phoneDetail/components/SimilarItems';
 import { dedupeProducts } from '@/lib/dedupeProducts';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 
 type Props = {
@@ -33,6 +34,7 @@ export default function ProductDetailPage({ params }: Props) {
     price: number;
   } | null>(null);
   const { addToCart } = useCart();
+  const router = useRouter();
 
   const dedupedSimilarProducts = useMemo(() => {
     return dedupeProducts(product?.similarProducts ?? []);
@@ -46,6 +48,7 @@ export default function ProductDetailPage({ params }: Props) {
       selectedColor: selectedColor.name,
       selectedStorage: selectedStorage.capacity,
     });
+    router.push('/cart');
   };
 
   useEffect(() => {
@@ -100,7 +103,7 @@ export default function ProductDetailPage({ params }: Props) {
                   opacity: selectedStorage ? 1 : 0.5,
                 }}
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
-                className={`py-4 px-5 text-xs tracking-widest uppercase transition-colors h-14 flex items-center justify-center ${
+                className={`py-4 px-5 text-xs cursor-pointer tracking-widest uppercase transition-colors h-14 flex items-center justify-center ${
                   !selectedStorage
                     ? 'bg-[#F3F2F2] text-[#C2BFBC]'
                     : 'bg-primary text-white'
