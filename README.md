@@ -40,69 +40,64 @@ Explore the live app 👉 [mbst-smartphones.vercel.app/phones](https://mbst-smar
 
 ```bash
 src/
-├── **mocks**/ # Test mocks (e.g., Next.js Image mock)
-│ └── next/
-├── app/ # App Router structure (Next.js 14)
-│ ├── api/ # API proxy handlers
-│ │ └── products/
-│ │ └── [id]/route.ts # Product detail API fetch
-│ │ └── route.ts # Product listing API fetch
-│ ├── cart/
-│ │ ├── **tests**/ # Page test
-│ │ └── page.tsx # Cart view
-│ └── phones/
-│ ├── [id]/page.tsx # Product detail page
-│ └── page.tsx # Product listing page
-├── components/ # Global reusable components
-│ ├── BackButton.tsx
-│ ├── Navbar.tsx
-│ ├── PageTransition.tsx
-│ └── Skeleton.tsx
-├── context/ # React Contexts
-│ ├── **tests**/
-│ │ ├── CartContext.test.tsx
-│ │ └── ToastContext.test.tsx
-│ ├── CartContext.tsx # Cart state
-│ └── ToastContext.tsx # Toast notifications
-├── features/ # Domain-specific features
-│ ├── phoneDetail/
-│ │ ├── **tests**/ # Tests for detail components
-│ │ ├── components/ # UI for phone detail
-│ │ │ ├── ColorSelector.tsx
-│ │ │ ├── ProductDetailSkeleton.tsx
-│ │ │ ├── ProductGallery.tsx
-│ │ │ ├── SimilarItems.tsx
-│ │ │ ├── SimilarItemsDesktop.tsx
-│ │ │ ├── SimilarItemsMobile.tsx
-│ │ │ ├── SpecificationsTable.tsx
-│ │ │ └── StorageSelector.tsx
-│ │ └── hooks/
-│ │ └── useProductById.ts
-│ └── phones/
-│ ├── **tests**/ # Tests for phone listing
-│ ├── components/
-│ │ ├── PhoneCard.tsx
-│ │ ├── PhoneGrid.tsx
-│ │ ├── PhoneGridSkeleton.tsx
-│ │ ├── ResultCount.tsx
-│ │ └── SearchBar.tsx
-│ ├── hooks/
-│ │ └── usePhone.ts
-│ └── types.ts
-├── hooks/ # Global custom hooks
-│ ├── useDebounce.ts
-│ └── useIsMobile.ts
-├── lib/ # Utilities and helpers
-│ ├── **tests**/
-│ │ └── fetcher.test.ts
-│ ├── dedupeProducts.ts
-│ └── fetcher.ts
-├── styles/ # Global styles
-├── .env.local # Env variables
-├── jest.config.ts # Jest config
-├── jest.setup.ts # Jest setup
-├── tsconfig.json # TS compiler config
-└── package.json # Project metadata
+├── app/                      # Next.js App Router structure
+│   ├── api/                  # API proxy routes
+│   │   └── products/
+│   │       ├── [id]/route.ts # Product detail fetch
+│   │       └── route.ts      # Product listing fetch
+│   ├── cart/
+│   │   └── page.tsx          # Cart view
+│   └── phones/
+│       ├── [id]/page.tsx     # Product detail page
+│       └── page.tsx          # Product listing
+│
+├── components/               # Shared UI components
+│   ├── BackButton.tsx
+│   ├── Navbar.tsx
+│   ├── PageTransition.tsx
+│   └── Skeleton.tsx
+│
+├── context/                  # Global state via React Context
+│   ├── CartContext.tsx
+│   └── ToastContext.tsx
+│
+├── features/                 # Feature-based folders (modular design)
+│   ├── phoneDetail/
+│   │   ├── components/       # UI components for detail view
+│   │   │   ├── ColorSelector.tsx
+│   │   │   ├── ProductGallery.tsx
+│   │   │   ├── SpecificationsTable.tsx
+│   │   │   └── StorageSelector.tsx
+│   │   └── hooks/
+│   │       └── useProductById.ts
+│   └── phones/
+│       ├── components/       # UI components for listing
+│       │   ├── PhoneCard.tsx
+│       │   ├── PhoneGrid.tsx
+│       │   └── SearchBar.tsx
+│       └── hooks/
+│           └── usePhone.ts
+│
+├── hooks/                    # Global reusable hooks
+│   ├── useDebounce.ts
+│   └── useIsMobile.ts
+│
+├── lib/                      # Helpers and utilities
+│   ├── fetcher.ts
+│   └── dedupeProducts.ts
+│
+├── styles/                   # Global styles (Tailwind base, etc.)
+│
+├── __tests__/                # Centralized tests (unit + integration)
+│   ├── context/
+│   ├── lib/
+│   └── pages/
+│
+├── .env.local                # Environment variables
+├── jest.config.ts           # Testing config
+├── jest.setup.ts            # Jest setup
+├── tsconfig.json            # TypeScript config
+└── package.json             # Project metadata
 ```
 
 ## ▶️ Getting Started
