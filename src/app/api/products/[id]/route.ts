@@ -2,13 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
   req: NextRequest,
-  context: { params: { id: string } }
+  { params }: { params: { id: string } }
 ) {
-  const { id } = context.params;
+  const { id } = params;
 
   const res = await fetch(`${process.env.API_URL}/products/${id}`, {
     headers: {
-      'x-api-key': process.env.API_KEY!,
+      'x-api-key': process.env.API_KEY ?? '',
     },
   });
 
