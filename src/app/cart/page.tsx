@@ -4,9 +4,11 @@ import { useCart } from '@/context/CartContext';
 import Image from 'next/image';
 import Link from 'next/link';
 import { PageTransition } from '@/components/PageTransition';
+import { useToast } from '@/context/ToastContext';
 
 export default function CartPage() {
   const { cart, removeFromCart } = useCart();
+  const { showToast } = useToast();
 
   const total = cart.reduce((acc, item) => {
     const storage = item.product.storageOptions.find(
@@ -14,6 +16,11 @@ export default function CartPage() {
     );
     return acc + (storage?.price ?? item.product.basePrice);
   }, 0);
+
+  const handleRemoveFromCart = (index: number) => {
+    removeFromCart(index);
+    showToast('Product removed from cart');
+  };
 
   return (
     <PageTransition>
@@ -54,12 +61,12 @@ export default function CartPage() {
                     {item.selectedStorage} | {item.selectedColor}
                   </p>
                   <p className="text-xs font-light mb-2">{price} EUR</p>
-                  <div className="">
+                  <div>
                     <button
-                      onClick={() => removeFromCart(index)}
+                      onClick={() => handleRemoveFromCart(index)}
                       className="text-xs text-[#DF0000] cursor-pointer"
                     >
-                      Eliminar
+                      Remove
                     </button>
                   </div>
                 </div>

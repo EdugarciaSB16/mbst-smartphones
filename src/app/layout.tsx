@@ -1,5 +1,6 @@
 import { CartProvider } from '@/context/CartContext';
 import { Navbar } from '@/components/Navbar';
+import { ToastProvider } from '@/context/ToastContext';
 import './globals.css';
 
 export const metadata = {
@@ -15,10 +16,14 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body suppressHydrationWarning>
-        <CartProvider>
-          <Navbar />
-          <main className="w-full max-w-[1720px] px-6 mx-auto">{children}</main>
-        </CartProvider>
+        <ToastProvider>
+          <CartProvider>
+            <Navbar />
+            <main className="w-full max-w-[1720px] px-6 mx-auto">
+              {children}
+            </main>
+          </CartProvider>
+        </ToastProvider>
       </body>
     </html>
   );

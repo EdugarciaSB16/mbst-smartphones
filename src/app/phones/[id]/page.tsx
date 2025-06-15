@@ -13,6 +13,7 @@ import { SpecificationsTable } from '@/features/phoneDetail/components/Specifica
 import { SimilarItems } from '@/features/phoneDetail/components/SimilarItems';
 import { dedupeProducts } from '@/lib/dedupeProducts';
 import { motion } from 'framer-motion';
+import { useToast } from '@/context/ToastContext';
 
 type ColorOption = {
   name: string;
@@ -30,6 +31,7 @@ export default function ProductDetailPage() {
   } | null>(null);
   const { addToCart } = useCart();
   const router = useRouter();
+  const { showToast } = useToast();
 
   const dedupedSimilarProducts = useMemo(() => {
     return dedupeProducts(product?.similarProducts ?? []);
@@ -43,6 +45,7 @@ export default function ProductDetailPage() {
       selectedColor: selectedColor.name,
       selectedStorage: selectedStorage.capacity,
     });
+    showToast('Product added to cart');
     router.push('/cart');
   };
 
