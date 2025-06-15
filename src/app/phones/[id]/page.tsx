@@ -109,7 +109,7 @@ export default function ProductDetailPage() {
               </motion.button>
             </div>
           </div>
-          <div className="my-[154px]" />
+          <div className="my-[60px] md:my-[80px] xl:my-[154px]" />
           <section aria-labelledby="specifications-heading">
             <SpecificationsTable
               brand={product.brand}
@@ -118,7 +118,7 @@ export default function ProductDetailPage() {
               specs={product.specs}
             />
           </section>
-          <div className="my-[154px]" />
+          <div className="my-[60px] md:my-[80px] xl:my-[154px]" />
           <section className="relative w-screen left-1/2 -translate-x-1/2">
             <SimilarItems products={dedupedSimilarProducts} />
           </section>
