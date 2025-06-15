@@ -1,7 +1,7 @@
 'use client';
+import { useParams, useRouter, notFound } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
 import { useProductById } from '@/features/phoneDetail/hooks/useProductById';
-import { notFound } from 'next/navigation';
 import { PageTransition } from '@/components/PageTransition';
 import { BackButton } from '@/components/BackButton';
 import { useState, useEffect, useMemo } from 'react';
@@ -12,12 +12,7 @@ import { ProductDetailSkeleton } from '@/features/phoneDetail/components/Product
 import { SpecificationsTable } from '@/features/phoneDetail/components/SpecificationsTable';
 import { SimilarItems } from '@/features/phoneDetail/components/SimilarItems';
 import { dedupeProducts } from '@/lib/dedupeProducts';
-import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-
-type Props = {
-  params: { id: string };
-};
 
 type ColorOption = {
   name: string;
@@ -25,8 +20,8 @@ type ColorOption = {
   imageUrl: string;
 };
 
-export default function ProductDetailPage({ params }: Props) {
-  const { id } = params;
+export default function ProductDetailPage() {
+  const { id } = useParams() as { id: string };
   const { product, isLoading, isError } = useProductById(id);
   const [selectedColor, setSelectedColor] = useState<ColorOption | null>(null);
   const [selectedStorage, setSelectedStorage] = useState<{
