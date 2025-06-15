@@ -10,7 +10,7 @@ export function useProductById(id: string) {
       revalidateOnFocus: false,
       revalidateIfStale: false,
       dedupingInterval: 10000,
-    }
+    },
   );
 
   return {

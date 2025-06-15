@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   const { id } = await params;
 
@@ -15,7 +15,7 @@ export async function GET(
   if (!res.ok) {
     return NextResponse.json(
       { error: 'Failed to fetch product by id' },
-      { status: res.status }
+      { status: res.status },
     );
   }
 

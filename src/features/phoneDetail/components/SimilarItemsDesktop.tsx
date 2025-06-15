@@ -27,7 +27,7 @@ export function SimilarItemsDesktop({ products }: { products: Product[] }) {
       const walk = (x - startX) * 1.5;
       containerRef.current.scrollLeft = scrollLeft - walk;
     },
-    [isDragging, startX, scrollLeft]
+    [isDragging, startX, scrollLeft],
   );
 
   const handleMouseUp = useCallback(() => setIsDragging(false), []);

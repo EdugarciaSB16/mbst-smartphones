@@ -12,7 +12,7 @@ export default function CartPage() {
 
   const total = cart.reduce((acc, item) => {
     const storage = item.product.storageOptions.find(
-      (opt) => opt.capacity === item.selectedStorage
+      (opt) => opt.capacity === item.selectedStorage,
     );
     return acc + (storage?.price ?? item.product.basePrice);
   }, 0);
@@ -33,11 +33,11 @@ export default function CartPage() {
           {cart.map((item, index) => {
             const price =
               item.product.storageOptions.find(
-                (opt) => opt.capacity === item.selectedStorage
+                (opt) => opt.capacity === item.selectedStorage,
               )?.price ?? item.product.basePrice;
 
             const color = item.product.colorOptions.find(
-              (c) => c.name === item.selectedColor
+              (c) => c.name === item.selectedColor,
             );
 
             return (

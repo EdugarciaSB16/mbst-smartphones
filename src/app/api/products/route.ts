@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
       headers: {
         'x-api-key': process.env.API_KEY!,
       },
-    }
+    },
   );
 
   const data = await res.json();
