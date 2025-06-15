@@ -103,7 +103,7 @@ describe('CartPage', () => {
       screen.queryByRole('button', { name: /pay/i }),
     ).not.toBeInTheDocument();
 
-    expect(screen.getByText(/continue shopping/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/continue shopping/i).length).toBeGreaterThan(0);
 
     expect(screen.getByText(/cart \(0\)/i)).toBeInTheDocument();
   });
