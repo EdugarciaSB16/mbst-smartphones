@@ -8,7 +8,7 @@
 
 **MBST Smartphones** is a responsive mobile phone catalog developed as part of a Frontend Engineer technical challenge. The app features real-time product search, interactive product detail pages, a functional shopping cart with persistent state, and animated UI feedback.
 
-> ✅ Built using the latest **Next.js 14 (App Router)** with a focus on clean architecture, performance, and test coverage.
+> ✅ Built using the latest **Next.js 15.3.3 (App Router)** with a focus on clean architecture, performance, and test coverage.
 
 ## 🚀 Demo
 
@@ -16,7 +16,7 @@ Explore the live app 👉 [mbst-smartphones.vercel.app/phones](https://mbst-smar
 
 ## 🔧 Tech Stack
 
-- **Framework**: Next.js 14
+- **Framework**: Next.js 15.3.3
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS v4
 - **State Management**: Context API
