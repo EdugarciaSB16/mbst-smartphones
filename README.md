@@ -12,7 +12,7 @@
 
 ## 🚀 Demo
 
-[Vercel Demo Link](#) – (Deployment pending)
+Explore the live app 👉 [mbst-smartphones.vercel.app/phones](https://mbst-smartphones.vercel.app/phones)
 
 ## 🔧 Tech Stack
 
