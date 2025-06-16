@@ -19,6 +19,7 @@ Explore the live app 👉 [mbst-smartphones.vercel.app/phones](https://mbst-smar
 - **Framework**: Next.js 15.3.3
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS v4
+- **Animation**: Framer Motion
 - **State Management**: Context API
 - **Data Fetching**: SWR
 - **Testing**: Jest + React Testing Library
